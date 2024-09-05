@@ -4,7 +4,7 @@ terraform {
     organization = "SailsSoftwareSolutions" 
 
     workspaces { 
-      name = "Kartheek-Learnings-CLI" 
+      name = "Kartheek-Learnings-Remote" 
     } 
   } 
 }
