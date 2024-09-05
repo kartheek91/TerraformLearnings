@@ -1,24 +1,27 @@
-terraform { 
-  cloud { 
-    
-    organization = "SailsSoftwareSolutions" 
+terraform {
+  cloud {
 
-    workspaces { 
-      name = "Kartheek-Learnings-Remote" 
-    } 
-  } 
+    organization = "SailsSoftwareSolutions"
+
+    workspaces {
+      name = "Kartheek-Learnings-Remote"
+    }
+  }
 }
 terraform {
   required_providers {
     azurerm = {
-      source = "hashicorp/azurerm"
+      source  = "hashicorp/azurerm"
       version = "4.0.1"
     }
   }
 }
 provider "azurerm" {
   features {
-    
+
   }
-subscription_id = var.subscription_id
+  subscription_id = var.subscription_id
+  client_id       = var.client_id
+  client_secret   = var.client_secret
+  tenant_id       = var.tenant_id
 }
