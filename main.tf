@@ -1,7 +1,7 @@
 resource "random_string" "storage_name" {
   length  = 8
-  special = false    # Avoid special characters for compatibility
-  upper   = false    # Azure resource names are case-insensitive
+  special = false    
+  upper   = false  
 }
 
 resource "azurerm_resource_group" "rg" {
@@ -16,12 +16,12 @@ resource "azurerm_storage_account" "asa" {
   account_replication_type = "GRS"
 
   tags = {
-    environment = "staging"
+    environment = "develop"
   }
 }
 # Create an Azure Storage Container
 resource "azurerm_storage_container" "asc" {
-  name                  = "skipper-container"
+  name                  = "skipper-${random_string.storage_name.result}"
   storage_account_name  = azurerm_storage_account.asa.name
   container_access_type = "private"
 }
