@@ -1,10 +1,15 @@
+resource "random_string" "storage_name" {
+  length  = 8
+  special = false    # Avoid special characters for compatibility
+  upper   = false    # Azure resource names are case-insensitive
+}
 
 resource "azurerm_resource_group" "rg" {
-  name     = "skipperresourcegroup"
+  name     = "sails${random_string.storage_name.result}"
   location = var.location
 }
 resource "azurerm_storage_account" "asa" {
-  name                     = "skipperstorageaccount"
+  name                     = "sails${random_string.storage_name.result}"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
