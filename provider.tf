@@ -1,13 +1,13 @@
 terraform {
   cloud {
-
     organization = "kartheek91"
 
     workspaces {
       name = "TerraformLearnings"
-      project = "Skipper"
+      # The 'project' argument is not valid in this context; remove it if not needed.
     }
   }
+
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
@@ -17,8 +17,9 @@ terraform {
 }
 
 provider "azurerm" {
-  features {
+  features {}
 
-  }
-  subscription_id = "3edb4498-c2e0-4679-aaa7-1c1b69419c0c"
+  # It's generally better to use the Azure CLI or environment variables for authentication
+  # instead of hardcoding the subscription_id.
+  subscription_id = var.subscription_id  # Ensure this variable is defined in variables.tf
 }
