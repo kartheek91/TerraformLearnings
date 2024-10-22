@@ -10,7 +10,7 @@ resource "random_string" "storage_name" {
 # }
 module "resourcegroup" {
   source  = "app.terraform.io/kartheek91/resourcegroup/azure"
-  version = "0.0.2"
+  version = "0.0.3"
   # insert required variables here
   name = "sails${random_string.storage_name.result}"
   location = var.location
