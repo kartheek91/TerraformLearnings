@@ -1,14 +1,10 @@
 terraform {
   cloud {
-
     organization = "kartheek91"
-
     workspaces {
       name = "TerraformLearnings"
     }
   }
-}
-terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
@@ -16,10 +12,9 @@ terraform {
     }
   }
 }
-provider "azurerm" {
-  features {
 
-  }
+provider "azurerm" {
+  features {}
   subscription_id = var.subscription_id
   client_id       = var.client_id
   client_secret   = var.client_secret

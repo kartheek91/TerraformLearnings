@@ -4,14 +4,21 @@ resource "random_string" "storage_name" {
   upper   = false  
 }
 
-resource "azurerm_resource_group" "rg" {
-  name     = "sails${random_string.storage_name.result}"
+# resource "azurerm_resource_group" "rg" {
+#   name     = "sails${random_string.storage_name.result}"
+#   location = var.location
+# }
+module "resourcegroup" {
+  source  = "app.terraform.io/kartheek91/resourcegroup/azure"
+  version = "0.0.2"
+  # insert required variables here
+  name = "sails${random_string.storage_name.result}"
   location = var.location
 }
 resource "azurerm_storage_account" "asa" {
   name                     = "sails${random_string.storage_name.result}"
-  resource_group_name      = azurerm_resource_group.rg.name
-  location                 = azurerm_resource_group.rg.location
+  resource_group_name      = module.resourcegroup.name
+  location                 = module.resourcegroup.location
   account_tier             = "Standard"
   account_replication_type = "GRS"
 
