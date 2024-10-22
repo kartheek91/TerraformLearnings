@@ -39,7 +39,7 @@ resource "azurerm_storage_blob" "sample_file_1" {
   storage_account_name   = azurerm_storage_account.asa.name
   storage_container_name = azurerm_storage_container.asc.name
   type                   = "Block"
-  source                 = "files/sample-file-1.txt"
+  source                 = "files/sample-file-11.txt"
 }
 
 resource "azurerm_storage_blob" "sample_file_2" {
